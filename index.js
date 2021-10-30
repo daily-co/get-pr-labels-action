@@ -13,14 +13,18 @@ async function main() {
         commit_sha: sha,
     });
 
-    const prs = result.data.filter((el) => el.state === 'closed');
+    core.info(`Found ${result.data.length} PRs ${JSON.stringify(result.data)}`);
+
+    const prs = result.data;
     const pr = prs[0];
 
     let labelNames = [];
 
-    pr.labels.forEach(e => {
-      labelNames.push(e.name);
-    });
+    if (pr && pr.labels) {
+      pr.labels.forEach(e => {
+        labelNames.push(e.name);
+      });
+    }
 
     core.info(`Found labels ${JSON.stringify(labelNames)}`);
     core.setOutput('labels', JSON.stringify(labelNames));
