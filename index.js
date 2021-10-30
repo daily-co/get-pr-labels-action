@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 async function main() {
-    const token = process.env.GITHUB_TOKEN;
+    const token = core.getInput('github_token', { required: false}) || process.env.GITHUB_TOKEN;
     const sha = core.getInput('sha', { required: false }) || process.env.GITHUB_SHA;
 
     const octokit = github.getOctokit(token);

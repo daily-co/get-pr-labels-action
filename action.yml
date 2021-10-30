@@ -1,6 +1,9 @@
 name: 'Get PR Labels'
 description: 'Sets outputs named with the labels of the PR associated with a commit'
 inputs:
+  github_token:
+    description: 'The token to use to authenticate with GitHub'
+    required: false
   sha:
     description: 'The commit to inspect, defaults to ${GITHUB_SHA}'
     required: false
