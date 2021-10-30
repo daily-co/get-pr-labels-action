@@ -1,0 +1,12 @@
+name: 'Get PR Labels'
+description: 'Sets outputs named with the labels of the PR associated with a commit'
+inputs:
+  sha:
+    description: 'The commit to inspect, defaults to ${GITHUB_SHA}'
+    required: false
+outputs:
+  labels:
+    description: 'Comma-separated list of labels associated with the PR'
+runs:
+  using: 'node12'
+  main: 'index.js'
